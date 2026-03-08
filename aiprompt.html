@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>AIプロンプト</title>
+<style>
+body { font-family: Consolas, monospace; background-color: #f9f9f9; padding: 20px; }
+pre { background-color: #eee; padding: 15px; border-radius: 5px; overflow-x: auto; }
+h1, h2 { color: #2a4d69; }
+</style>
+</head>
+<body>
+
+<h1>AIプロンプト</h1>
+
+<p></p>
+
+<pre>
+Pythonで、会社PC上で動く「最強版AutoGPT風半自律AI開発環境」を作りたいです。
+
+目的：
+社内AIが生成したPythonコードを保存 → 実行 → 結果確認 → 改善 → タスク順に自律ループする環境を構築すること。
+
+1. フォルダ構成
+ai-dev/
+  runner.py
+  run_loop.py
+  context_builder.py
+  agent_loop.py
+  task_manager.py
+  enhanced_agent.py
+  task_scheduler.py
+
+workspace/
+  scripts/
+  data/
+  output/
+  tasks/
+  task_queue.json
+
+ai_io/
+  goal.txt
+  feedback.txt
+
+2. 各ツールの仕様
+
+runner.py
+- PythonスクリプトをCLIで実行
+- stdout/stderr表示
+- subprocess使用
+
+run_loop.py
+- workspace/scripts を監視
+- 新規 .py ファイル追加 → 自動実行
+- 5秒ごとにチェック
+
+context_builder.py
+- workspace全体をスキャン
+- フォルダ構造＋Pythonコード（最大2000文字） → project_context.txt 出力
+
+task_manager.py
+- goal.txt を読み込みタスク作成
+- task_queue.json に保存（優先度管理）
+
+task_scheduler.py
+- 大目標を社内AIに渡して自動タスク分解
+- タスクの依存関係と優先度管理
+
+enhanced_agent.py
+- task_queue.json からタスク順に処理
+- scripts 内のPythonコードを runner.py で実行
+- output に結果保存
+- feedback.txt に評価
+- AIに改善コード生成を依頼 → scripts 更新
+- タスク完了 → 次タスクに自動移行
+
+agent_loop.py
+- enhanced_agent.py の簡易ループ用（任意）
+
+3. CLI追加ツール（任意）
+- csv_summary.py（CSV分析）
+- log_analyzer.py（ログ解析）
+- file_index.py（フォルダ検索）
+
+4. 使用手順
+1. ai_io/goal.txt に大目標を記載
+2. task_scheduler.py → タスク分解 → task_queue.json 作成
+3. context_builder.py → project_context.txt 作成
+4. 社内AIに project_context.txt と goal.txt を渡してコード生成
+5. scripts に生成コードを保存
+6. enhanced_agent.py 実行 → タスク順に自動処理
+7. output で結果確認
+8. AIにフィードバック → 改善コード生成
+9. 全タスク完了まで自動ループ
+
+5. 注意点
+- すべてコードを途中省略せず完全に出力
+- タスク分割＋優先度順ループ付きで自律動作
+- API/GitHub不要、完全社内PC完結
+- Claude Code / AutoGPT の半自律開発ループを再現可能
+</pre>
+
+</body>
+</html>
