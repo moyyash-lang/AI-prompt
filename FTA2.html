@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d1117;font-family:'Courier New',monospace;padding:16px;overflow-x:auto}
+svg{display:block;margin:0 auto}
+.top{fill:#c0392b}
+.mid{fill:#1a252f;stroke-width:1.5}
+.leaf-mfg{fill:#0d2b1a;stroke:#27ae60;stroke-width:1}
+.leaf-ext{fill:#2b1a0d;stroke:#e67e22;stroke-width:1}
+.leaf-ctl{fill:#1a0d2b;stroke:#8e44ad;stroke-width:1}
+.or{fill:#e67e22}
+.and{fill:#2980b9}
+.line{stroke:#445;stroke-width:1;fill:none}
+text{font-family:'Courier New',monospace}
+</style>
+</head>
+<body>
+<svg viewBox="0 0 820 530" width="820" height="530">
+
+<!-- TOP -->
+
+<rect x="260" y="8" width="300" height="36" rx="3" class="top"/>
+<text x="410" y="23" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">10〜20Hz 車室内振動</text>
+<text x="410" y="37" text-anchor="middle" fill="#faa" font-size="9">100km/h巡航時 [トップ事象]</text>
+
+<!-- OR gate -->
+
+<polygon points="410,52 396,72 424,72" class="or"/>
+<text x="410" y="67" text-anchor="middle" fill="#fff" font-size="8">OR</text>
+<line x1="410" y1="44" x2="410" y2="52" class="line"/>
+<line x1="410" y1="72" x2="410" y2="86" class="line"/>
+<line x1="160" y1="86" x2="660" y2="86" class="line"/>
+<line x1="160" y1="86" x2="160" y2="106" class="line"/>
+<line x1="410" y1="86" x2="410" y2="106" class="line"/>
+<line x1="660" y1="86" x2="660" y2="106" class="line"/>
+
+<!-- ── BRANCH 1: ホイールホップ ── -->
+
+<rect x="72" y="106" width="176" height="36" rx="3" class="mid" stroke="#3498db"/>
+<text x="160" y="121" text-anchor="middle" fill="#7ec8e3" font-size="10">ホイールホップ共振</text>
+<text x="160" y="134" text-anchor="middle" fill="#888" font-size="8">12〜14Hz（独立懸架）</text>
+<line x1="160" y1="142" x2="160" y2="158" class="line"/>
+
+<!-- AND gate -->
+
+<rect x="148" y="158" width="24" height="15" rx="2" class="and"/>
+<text x="160" y="169" text-anchor="middle" fill="#fff" font-size="8">AND</text>
+<line x1="160" y1="173" x2="160" y2="186" class="line"/>
+<line x1="100" y1="186" x2="220" y2="186" class="line"/>
+<line x1="100" y1="186" x2="100" y2="202" class="line"/>
+<line x1="220" y1="186" x2="220" y2="202" class="line"/>
+
+<rect x="44" y="202" width="112" height="44" rx="2" class="leaf-mfg"/>
+<text x="100" y="218" text-anchor="middle" fill="#2ecc71" font-size="9">ばね下質量</text>
+<text x="100" y="230" text-anchor="middle" fill="#888" font-size="8">20〜27kg/輪</text>
+<text x="100" y="241" text-anchor="middle" fill="#aaa" font-size="7.5">製造±ばらつき</text>
+
+<rect x="164" y="202" width="112" height="44" rx="2" class="leaf-mfg"/>
+<text x="220" y="218" text-anchor="middle" fill="#2ecc71" font-size="9">タイヤ縦剛性</text>
+<text x="220" y="230" text-anchor="middle" fill="#888" font-size="8">140〜200 kN/m</text>
+<text x="220" y="241" text-anchor="middle" fill="#aaa" font-size="7.5">±10〜15%</text>
+
+<!-- ── BRANCH 2: EGUマウント ── -->
+
+<rect x="316" y="106" width="188" height="36" rx="3" class="mid" stroke="#e67e22"/>
+<text x="410" y="121" text-anchor="middle" fill="#f0a500" font-size="10">EGUマウント剛体共振</text>
+<text x="410" y="134" text-anchor="middle" fill="#888" font-size="8">9〜10Hz（バウンス/ピッチ）</text>
+<line x1="410" y1="142" x2="410" y2="158" class="line"/>
+
+<polygon points="410,158 396,178 424,178" class="or"/>
+<text x="410" y="173" text-anchor="middle" fill="#fff" font-size="8">OR</text>
+<line x1="410" y1="178" x2="410" y2="192" class="line"/>
+<line x1="320" y1="192" x2="500" y2="192" class="line"/>
+<line x1="320" y1="192" x2="320" y2="202" class="line"/>
+<line x1="410" y1="192" x2="410" y2="202" class="line"/>
+<line x1="500" y1="192" x2="500" y2="202" class="line"/>
+
+<rect x="264" y="202" width="112" height="44" rx="2" class="leaf-mfg"/>
+<text x="320" y="218" text-anchor="middle" fill="#2ecc71" font-size="9">マウントゴム剛性</text>
+<text x="320" y="230" text-anchor="middle" fill="#888" font-size="8">±20%+温度依存</text>
+<text x="320" y="241" text-anchor="middle" fill="#aaa" font-size="7.5">製造ばらつき主因</text>
+
+<rect x="354" y="202" width="112" height="44" rx="2" class="leaf-mfg"/>
+<text x="410" y="218" text-anchor="middle" fill="#2ecc71" font-size="9">EGU質量</text>
+<text x="410" y="230" text-anchor="middle" fill="#888" font-size="8">65〜150kg</text>
+<text x="410" y="241" text-anchor="middle" fill="#aaa" font-size="7.5">車格差</text>
+
+<rect x="444" y="202" width="112" height="44" rx="2" class="leaf-ext"/>
+<text x="500" y="218" text-anchor="middle" fill="#e67e22" font-size="9">路面うねり</text>
+<text x="500" y="230" text-anchor="middle" fill="#888" font-size="8">λ≈2.9m@100km/h</text>
+<text x="500" y="241" text-anchor="middle" fill="#aaa" font-size="7.5">= 9.6Hz外部入力</text>
+
+<!-- ── BRANCH 3: 駆動系ねじり ── -->
+
+<rect x="570" y="106" width="180" height="36" rx="3" class="mid" stroke="#8e44ad"/>
+<text x="660" y="121" text-anchor="middle" fill="#c39bd3" font-size="10">駆動系ねじり共振</text>
+<text x="660" y="134" text-anchor="middle" fill="#888" font-size="8">8〜15Hz（過渡励起）</text>
+<line x1="660" y1="142" x2="660" y2="158" class="line"/>
+
+<polygon points="660,158 646,178 674,178" fill="#8e44ad"/>
+<text x="660" y="173" text-anchor="middle" fill="#fff" font-size="8">OR</text>
+<line x1="660" y1="178" x2="660" y2="192" class="line"/>
+<line x1="590" y1="192" x2="730" y2="192" class="line"/>
+<line x1="590" y1="192" x2="590" y2="202" class="line"/>
+<line x1="730" y1="192" x2="730" y2="202" class="line"/>
+
+<rect x="530" y="202" width="120" height="44" rx="2" class="leaf-ctl"/>
+<text x="590" y="218" text-anchor="middle" fill="#a29bfe" font-size="9">モータートルク変動</text>
+<text x="590" y="230" text-anchor="middle" fill="#888" font-size="8">回生切替・急加速</text>
+<text x="590" y="241" text-anchor="middle" fill="#aaa" font-size="7.5">ステップ応答</text>
+
+<rect x="668" y="202" width="120" height="44" rx="2" class="leaf-ctl"/>
+<text x="728" y="218" text-anchor="middle" fill="#a29bfe" font-size="9">エンジン始動過渡</text>
+<text x="728" y="230" text-anchor="middle" fill="#888" font-size="8">0.5次@1140rpm</text>
+<text x="728" y="241" text-anchor="middle" fill="#aaa" font-size="7.5">= 9.5Hz掃引</text>
+
+<!-- ── 60km/h追記（軽自動車特記） ── -->
+
+<line x1="160" y1="290" x2="160" y2="310" class="line"/>
+<rect x="44" y="310" width="232" height="52" rx="3" fill="#1a1a0d" stroke="#f1c40f" stroke-width="1"/>
+<text x="160" y="326" text-anchor="middle" fill="#f1c40f" font-size="9" font-weight="bold">▶ 軽自動車 特記</text>
+<text x="160" y="340" text-anchor="middle" fill="#ccc" font-size="8">60km/h: R1H = 9.6Hz</text>
+<text x="160" y="352" text-anchor="middle" fill="#ccc" font-size="8">→ EGUマウント共振と直撃一致</text>
+<text x="160" y="362" text-anchor="middle" fill="#f39c12" font-size="7.5">スーパーHWが最深刻</text>
+
+<!-- LEGEND -->
+
+<rect x="18" y="420" width="784" height="96" rx="3" fill="#0a0f15" stroke="#222"/>
+<text x="34" y="438" fill="#666" font-size="9">凡例</text>
+<polygon points="70,452 60,468 80,468" class="or"/>
+<text x="88" y="463" fill="#aaa" font-size="8">OR（いずれか）</text>
+<rect x="150" y="452" width="20" height="14" rx="2" class="and"/>
+<text x="178" y="463" fill="#aaa" font-size="8">AND（全て必要）</text>
+<rect x="250" y="453" width="12" height="12" rx="1" class="leaf-mfg"/>
+<text x="270" y="463" fill="#aaa" font-size="8">製造ばらつき主因</text>
+<rect x="370" y="453" width="12" height="12" rx="1" class="leaf-ext"/>
+<text x="390" y="463" fill="#aaa" font-size="8">外部入力</text>
+<rect x="460" y="453" width="12" height="12" rx="1" class="leaf-ctl"/>
+<text x="480" y="463" fill="#aaa" font-size="8">制御・過渡入力</text>
+<text x="34" y="485" fill="#555" font-size="8">※ 100km/h: タイヤR1H=16Hz → ホイールホップ共振(12〜14Hz)近傍を広帯域励起。EGUマウント(9〜10Hz)は路面うねり起動。</text>
+<text x="34" y="500" fill="#555" font-size="8">※ ジムニーのみリジッドアクスルによりホイールホップ=8.6Hz → EGUマウント共振帯と干渉リスク。</text>
+<text x="34" y="515" fill="#555" font-size="8">※ EGUマウント剛体モードのみが9〜10Hz帯の常在モード。他3モード(ねじり・ホイールホップ・トーションビーム)はすべて12Hz以上(軽自動車)。</text>
+</svg>
+</body>
+</html>
